@@ -1,5 +1,5 @@
 //  callback functions
-// take a function and pass to another function is called called callback function
+// take a function and pass to another function is called callback function
 
 setTimeout(function () {
   console.log("timer");
