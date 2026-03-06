@@ -1,4 +1,4 @@
-// JavaScript
+// JavaScript - Day1
 
 // variable
 // 1. let
