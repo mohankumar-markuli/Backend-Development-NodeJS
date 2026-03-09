@@ -1,4 +1,5 @@
 var x = 1;
+console.log(x)
 a();
 b();
 console.log(x)
@@ -10,6 +11,8 @@ function a(){
 }
 
 function b(){
-    var x = 200;
+    x = 200;
     console.log(x)
 }
+
+console.log(x)
