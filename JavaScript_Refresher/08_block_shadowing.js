@@ -11,14 +11,15 @@
 console.log(a);
 // console.log(b);
 // console.log(c);
-// shadowing
 
+// shadowig
 let value = 50;
 {
   let value = 20;
   console.log(value);
 }
 console.log(value);
+
 
 const value2 = 5000;
 {
