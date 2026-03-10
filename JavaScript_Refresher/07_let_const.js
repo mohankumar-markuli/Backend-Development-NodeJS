@@ -1,4 +1,4 @@
-// console.log(a);
+// console.log(a); //reference error as let a is in temporal dead zone
 // console.log(b);
 
 let a = 10;

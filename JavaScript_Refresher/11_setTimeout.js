@@ -21,7 +21,7 @@ function xyz(){
 }
 xyz()
 
-//  can do using var 
+//  can do using var - making a closure 
 
 function pqr(){
     for (let i =1;i<=5;i++)
