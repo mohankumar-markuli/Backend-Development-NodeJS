@@ -1,0 +1,27 @@
+const vehicle = {
+  start() {
+    console.log("Vehicle started");
+  }
+};
+
+const car = Object.create(vehicle);
+vehicle.name = "BMW"
+
+car.drive = function () {
+  console.log("Car is driving");
+};
+
+const model = Object.create(car);
+
+model.type = function(){
+    console.log(this.name);
+};
+
+vehicle.start();
+car.start();
+model.start();
+
+car.drive();
+model.drive();
+
+model.type();
