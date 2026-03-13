@@ -33,3 +33,14 @@ User.prototype.greet = function () {
 
 user1.greet();
 console.log(user1.hasOwnProperty("greet"));
+
+
+for (let key in user1) {
+  console.log("key", key)
+  if (user1.hasOwnProperty(key)) {
+    console.log("Own Preperties");
+  }
+  else{
+    console.log("Inherited Preperties");
+  }
+}
