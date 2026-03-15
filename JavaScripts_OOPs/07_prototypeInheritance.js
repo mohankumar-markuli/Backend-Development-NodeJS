@@ -7,6 +7,7 @@ const vehicle = {
 const car = Object.create(vehicle);
 vehicle.name = "BMW"
 
+
 car.drive = function () {
   console.log("Car is driving");
 };
