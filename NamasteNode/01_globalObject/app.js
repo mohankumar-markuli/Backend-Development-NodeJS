@@ -13,4 +13,3 @@ console.log("-----------------------------------------------")
 
 console.log(globalThis == global); // true
 console.log(globalThis == this); // false
-
