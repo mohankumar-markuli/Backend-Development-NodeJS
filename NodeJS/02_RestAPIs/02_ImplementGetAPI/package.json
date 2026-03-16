@@ -1,0 +1,19 @@
+{
+  "name": "01_inti",
+  "version": "1.0.0",
+  "description": "first project",
+  "license": "ISC",
+  "author": "Mohankumar",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
