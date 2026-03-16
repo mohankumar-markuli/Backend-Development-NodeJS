@@ -4,8 +4,20 @@
 - Modifies the information of the course with the provided details
 - Gets the average ratings of all the students for the course 1234
 
+### Example ====> GET http://localhost:8080/api/v1/courses/{i}
+
+GET - method
+http - protocal
+localhost - domain name
+8080 - port number
+api - application context name
+v1 - version
+courses - resource name
+{i} - properties
+
 
 base_url - http://localhost:8080/api/
+api endpoint - v1/courses/{i}
 
 ### Gets the list of the courses aand details
 GET /v1/courses
