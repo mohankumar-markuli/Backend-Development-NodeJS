@@ -1,8 +1,0 @@
-Payment object created with amount 5000 and receiver John
-Amount updated to 4000
-Receiver updated to John B
-Payment object details - amount is 4000 and receiver is John B
-Payment.prototype has property setAmount: false
-Payment.prototype has property getAmount: false
-Payment.prototype has property setReceiver: true
-Payment.prototype has property getReceiver: true

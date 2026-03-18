@@ -93,5 +93,3 @@ app.post('/api/v1/courses',(req,res) =>{
 app.listen(3000,() => {
     console.log("Express server up and running");
 })
-
-
