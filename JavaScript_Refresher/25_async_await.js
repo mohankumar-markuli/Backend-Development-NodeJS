@@ -8,14 +8,18 @@ const p2 = new Promise((resolve, reject) => {
 
 async function handlePromise() {
   console.log("Start promise 1");
-  // js engine waits for the promise to resolve
+
   const val1 = await p1;
+  // js engine waits for the promise to resolve
+
   console.log("hello promise 1");
   console.log(val1, "pointer 01");
 
   console.log("Start promise 2");
-  // js engine waits for the promise to resolve
   const val2 = await p2;
+    // js engine waits for the promise to resolve
+
+    
   console.log("hello promise 2");
   console.log(val2, "pointer 02");
 }

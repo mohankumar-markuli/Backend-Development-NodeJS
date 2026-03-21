@@ -14,4 +14,10 @@ handlePromise();
 
 // or
 
-handlePromise().catch((err) => console.log(err));
+async function handlePromise1() {
+    const data = await fetch(API_URL);
+    const jsonValue = await data.json();
+    console.log(jsonValue);
+}
+
+handlePromise1().catch((err) => console.log(err));
