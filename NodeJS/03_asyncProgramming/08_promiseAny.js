@@ -3,9 +3,9 @@ const asyncFunction1 = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log("Async Function 1");
-            // resolve("Asyn Function 1 resolved");
-            reject("Async Function 1 rejected");
-        }, 3000);
+            resolve("Asyn Function 1 resolved");
+            // reject("Async Function 1 rejected");
+        }, 1000);
     });
 }
 
@@ -25,17 +25,17 @@ const asyncFunction3 = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log("Async Function 3");
-            // resolve("Asyn Function 3 resolved");
-            reject("Async Function 3 rejected");
-        }, 1000);
+            resolve("Asyn Function 3 resolved");
+            // reject("Async Function 3 rejected");
+        }, 3000);
     });
 }
 
 const main = () => {
     console.log("Step 1: Start the process");
 
-    // value of first settled promise either reloved or rejected
-    const promiseResponse = Promise.race([asyncFunction1(), asyncFunction2(), asyncFunction3()]);
+    // if one promise fails then it waits for all of other promises to settle
+    const promiseResponse = Promise.any([asyncFunction1(), asyncFunction2(), asyncFunction3()]);
 
     console.log(promiseResponse); // pending 
     // promiseResponse returns a another promise
