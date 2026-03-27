@@ -6,9 +6,9 @@
 // step 6: MongoDB NodeJS Driver - npm install mongodb 
 
 const { MongoClient } = require("mongodb");
+require("dotenv").config();
 
-const url =
-    "mongodb+srv://mohankumarmarkuli_db_user:H3mYMhJOQHqOsv6F@namastenode.voiccvs.mongodb.net/?appName=NamasteNode";
+const url = process.env.MONGODB_URI;
 const client = new MongoClient(url);
 
 const dbName = 'HelloWorld';
