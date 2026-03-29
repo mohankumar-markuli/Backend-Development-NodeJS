@@ -1,0 +1,44 @@
+Micro Queue
+    - NextTick
+    - Promise
+
+Macro Task Queue
+    - timer Phase
+    - Pending Callback Phase
+    - Idle Phase
+    - Poll Phase
+    - Check Phase
+    - Close
+    
+Tracking
+-------------------------------------
+Console -
+-------------------------------------
+
+
+-------------------------------------
+Call Stack - 
+-------------------------------------
+Operating system - 
+-------------------------------------
+Event Loop -
+-------------------------------------
+Micro Task Queue
+    NT - 
+    PC - P3
+-------------------------------------
+Macro Task Queue
+(timer)     Phase 1 -  T1
+(poll)      Phase 4 - 
+(immidiate) Phase 5 -
+(close)     Phase 6 -   
+-------------------------------------
+
+EventLoop: 
+while(true)
+1. See if there are some functions which are ready to execute
+2. If the callstack is empty
+    // if 1 and 2 are satisfied then
+3. Places the function in the callstack
+
+*/

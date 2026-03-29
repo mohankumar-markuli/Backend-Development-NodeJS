@@ -32,18 +32,32 @@ const asyncFunction3 = () => {
 }
 
 // sync function
-function sumofTwo(a,b){
-    return a+b;
+function sumofTwo(a, b) {
+    // returning a number
+    return a + b;
 }
 
-const main = async () =>{
+// async function 
+async function difference(a, b) {
+    // returning a fulfilled value promise
+    return a - b;
+}
+
+const main = async () => {
     console.log("Started main function");
 
-    const resp1 = await asyncFunction1();
-    console.log(resp1);
-
-    const sumTwo = await sumofTwo(2,10);
+    try {
+        const resp1 = await asyncFunction1();
+        console.log(resp1);
+    } catch(err){
+        console.log("error occured", err)
+    }
+    
+    const sumTwo = sumofTwo(2, 10);
     console.log(sumTwo);
+
+    const diffResult = await difference(10, 5);
+    console.log(diffResult);
 
     const resp2 = await asyncFunction2();
     console.log(resp2);
