@@ -1,6 +1,14 @@
 {
   "tasks": [
     {
+      "id": 1,
+      "title": "Task Manager API",
+      "description": "We are developing an Task Manager API Project",
+      "completed": true,
+      "priority": "high",
+      "createdAt": "2024-01-10T14:20:00.000Z"
+    },
+    {
       "id": 2,
       "title": "Create a new project",
       "description": "Create a new project using the Express application generator",
