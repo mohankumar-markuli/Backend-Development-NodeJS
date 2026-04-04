@@ -1,18 +1,25 @@
-POST /users
-    user1 registeration
-    user2 refisteration
+### Under Development - Prototype as follows
 
-POST /login
-    user1 login
-    user2 login
+## POST /users
+    Example
+        user1 registeration
+        user2 registeration
+
+## POST /login
+    Example
+        user1 login
+        user2 login
     
-GET /users
-    user1 all information 
-    user2 all information 
+## GET /users
+    Example
+        user1 all information 
+        user2 all information 
     
-PUT /users
-    user1 profile update
-    user2 profile update
+## PUT /users
+    Example
+        user1 profile update
+        user2 profile update
     
-DELETE /users
-    user1 delete profile
+## DELETE /users
+    Example
+        user1 delete profile
