@@ -10,7 +10,7 @@ const app = express(); //instance of express
 // CouchDB, PouchDB
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://mohankumarmarkuli_db_user:xqNc3f4CpDbDFfQc@airtribenodejs.nlllbtl.mongodb.net/?appName=AirtribeNodeJS";
+const uri = process.env.MONGODB_URI;
 
 app.use(logger);
 app.use('/api/v1/courses', courseRouter); // mount router on the path /api/v1/courses
