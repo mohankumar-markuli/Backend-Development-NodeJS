@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 // creating a express instance
 const app = express();
@@ -10,7 +11,7 @@ const jwt = require("jsonwebtoken");
 
 const User = require("./models/user");
 
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(cookieParser());

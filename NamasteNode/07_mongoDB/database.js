@@ -5,11 +5,11 @@
 // step 5: to access data inside use MBD Compass software
 // step 6: MongoDB NodeJS Driver - npm install mongodb 
 
-const { MongoClient } = require("mongodb");
 require("dotenv").config();
+const { MongoClient } = require("mongodb");
 
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
+const URI = process.env.MONGODB_URI;
+const client = new MongoClient(URI);
 
 const dbName = 'HelloWorld';
 
