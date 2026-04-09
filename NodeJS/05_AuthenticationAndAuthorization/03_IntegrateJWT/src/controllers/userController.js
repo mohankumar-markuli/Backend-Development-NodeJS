@@ -1,6 +1,9 @@
 const userModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const jsw = require("jsonwebtoken");
+
 const SALT_ROUND = 10;
+const JWT_KEY = "MySecretKey";
 
 const registerUser = async (user) => {
     user.password = bcrypt.hashSync(user.password, SALT_ROUND);
@@ -19,7 +22,9 @@ const loginUser = async (email, password) => {
 
     if (!isPassword) throw new Error("Password not Match");
 
-    return { status: "ok", user: { id: dbUser.id } };
+    const token = jsw.sign({ id: dbUser.id, role: dbUser.role }, JWT_KEY, { expiresIn: '1h' });
+
+    return { status: "ok", token};
 }
 
 module.exports = {

@@ -6,6 +6,11 @@ const getAllCourse = (req, res) => {
 }
 
 const getCourseById = (req, res) => {
+
+    console.log(req.headers);
+
+
+
     console.log(req.params);
     const course = courses.find(c => c.id === parseInt(req.params.courseId));
     if (!course) {

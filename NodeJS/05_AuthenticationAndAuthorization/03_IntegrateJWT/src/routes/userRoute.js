@@ -20,7 +20,8 @@ router.post("/login", async (req, res) => {
         const token = await loginUser(email, password);
         return res.status(200).send({ token: token });
     } catch (err) {
-        res.send("invalid credientials")
+        console.log(err);
+        res.send("invalid credientials");
     }
 });
 
