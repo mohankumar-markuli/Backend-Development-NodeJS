@@ -13,7 +13,7 @@ const PORT = process.env.PORT;
 
 app.use(logger);
 
-app.use(express.json()); 
+app.use(express.json());
 app.use('/api/v1/courses', courseRouter);
 app.use('/api/v1/users', userRouter);
 
@@ -29,8 +29,13 @@ app.get('/', (req, res) => {
 mangoose.connect(URI).
 	then(() => {
 		console.log("Connected to MongoDB");
+	}).catch((err) => {
+		console.log("Problem connecting DB")
+
 	}).then(() => {
 		app.listen(PORT, () => {
 			console.log("Express server up and running on port :", PORT);
 		});
+	}).catch((err) => {
+		console.log("Problem connecting to Server")
 	});

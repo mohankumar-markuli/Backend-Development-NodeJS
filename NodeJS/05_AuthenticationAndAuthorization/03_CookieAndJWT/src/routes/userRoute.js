@@ -6,8 +6,12 @@ router.use(express.json());
 
 router.post("/register", async (req, res) => {
     const user = req.body;
-    const dbUser = await registerUser(user);
-    res.send(dbUser);
+    try {
+        const dbUser = await registerUser(user);
+        res.send(dbUser);
+    } catch (err) {
+        res.send(err.message);
+    }
 });
 
 router.post("/login", async (req, res) => {
@@ -20,4 +24,4 @@ router.post("/login", async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = router;    
