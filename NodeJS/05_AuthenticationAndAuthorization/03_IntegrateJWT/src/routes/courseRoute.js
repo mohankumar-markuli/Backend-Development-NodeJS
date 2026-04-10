@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { getAllCourse, getCourseById, createCourse } = require('../controllers/courseControllers');
+const {validatToken} = require('../middlewares/authMiddleware');
 
 router.use(express.json());
+// router.use(validatToken);
 
 router.post('/create', async (req, res) => {
     const course = req.body;
@@ -10,7 +12,7 @@ router.post('/create', async (req, res) => {
     res.send(dbCourse);
 });
 
-router.get('/', async (req, res) => {
+router.get('/', validatToken, async (req, res) => {
     try {
         const dbCourses = await getAllCourse();
         res.send(dbCourses);
@@ -19,7 +21,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:courseId', async (req, res) => {
+router.get('/:courseId', validatToken, async (req, res) => {
     try {
         const id = req.params.courseId;
         const dbCourse = await getCourseById(id);
