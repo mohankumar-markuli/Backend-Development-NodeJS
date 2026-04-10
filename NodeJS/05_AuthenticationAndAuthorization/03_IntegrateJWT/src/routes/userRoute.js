@@ -14,7 +14,6 @@ router.post("/register", async (req, res) => {
         console.log(err.message)
         res.status(400).send("User Already Exsist - Try Login");
     }
-
 });
 
 router.post("/login", async (req, res) => {

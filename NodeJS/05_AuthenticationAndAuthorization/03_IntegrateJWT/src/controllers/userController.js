@@ -1,8 +1,9 @@
 const userModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const SALT_ROUNDS = process.env.SALT_ROUNDS;
 
 const registerUser = async (user) => {
-    user.password = bcrypt.hashSync(user.password,10);
+    user.password = bcrypt.hashSync(user.password,SALT_ROUNDS);
     const dbUser = await userModel.create(user);
     return dbUser;
 }
