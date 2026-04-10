@@ -29,13 +29,11 @@ app.get('/', (req, res) => {
 mangoose.connect(URI).
 	then(() => {
 		console.log("Connected to MongoDB");
-	}).catch((err) => {
-		console.log("Problem connecting DB")
-
-	}).then(() => {
+	})
+	.then(() => {
 		app.listen(PORT, () => {
 			console.log("Express server up and running on port :", PORT);
 		});
 	}).catch((err) => {
-		console.log("Problem connecting to Server")
+		console.log("Bootstraping Problem : ", err.message);
 	});

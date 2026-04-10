@@ -6,12 +6,15 @@ router.use(express.json());
 
 router.post("/register", async (req, res) => {
     const user = req.body;
+
     try {
         const dbUser = await registerUser(user);
         res.send(dbUser);
     } catch (err) {
-        res.send(err.message);
+        console.log(err.message)
+        res.status(400).send("User Already Exsist - Try Login");
     }
+
 });
 
 router.post("/login", async (req, res) => {
@@ -20,9 +23,8 @@ router.post("/login", async (req, res) => {
         const token = await loginUser(email, password);
         return res.status(200).send({ token: token });
     } catch (err) {
-        console.log(err);
-        res.send("invalid credientials");
+        res.send("invalid credientials")
     }
 });
 
-module.exports = router;    
+module.exports = router;

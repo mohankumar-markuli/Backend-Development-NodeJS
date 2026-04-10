@@ -1,27 +1,22 @@
 const courses = require('../models/coursesModel').courses;
 
-const getAllCourse = (req, res) => {
-    console.log(req.query);
-    res.send(courses);
+const courseModel = require("../models/courseModel");
+
+const createCourse = async (course) => {
+    const dbCourse = await courseModel.create(course);
+    return dbCourse;
 }
 
-const getCourseById = (req, res) => {
-
-    console.log(req.headers);
-
-
-
-    console.log(req.params);
-    const course = courses.find(c => c.id === parseInt(req.params.courseId));
-    if (!course) {
-        return res.status(404).send("Course with given id not found");
-    }
-    res.send(course);
+const getAllCourse = async () => {
+    const dbCourses = await courseModel.find({});
+    if (!dbCourses) throw new Error("No data found");
+    return dbCourses;
 }
 
-const createCourse = (req, res) => {
-    console.log(req.body);
-    res.send("Course created successfully");
+const getCourseById = async (id) => {
+    const course = await courseModel.findById(id);
+    if (!course) throw new Error("Course with given id not found");
+    return course;
 }
 
 module.exports = { getAllCourse, getCourseById, createCourse };
