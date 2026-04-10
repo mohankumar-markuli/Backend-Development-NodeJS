@@ -1,0 +1,24 @@
+oAuth (Google)
+    JWT
+
+Airbnb -> Building the app
+Configuration at Google level
+
+Airbnb --> Google
+    --> Google generates a token (JWT)
+        --> Redirects you to Airbnb again
+            --> Airbnb receives token (frontend)
+                --> Airbnb backend for validation (JWT)
+                JWT --> validating the hash (key -> ask google again and agian)
+        
+Solution - Asymetric Encryption
+
+Airbnb --> Google
+    --> Google generates a token (JWT)
+        --> Redirects you to Airbnb again
+            --> Airbnb receives token (frontend)
+                --> Airbnb backend for validation (JWK)
+
+JWK - JSON Web Key (Public Key)
+JWT - KSON Web Key (Private Key)
+
