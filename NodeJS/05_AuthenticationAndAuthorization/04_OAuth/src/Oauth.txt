@@ -20,5 +20,5 @@ Airbnb --> Google
                 --> Airbnb backend for validation (JWK)
 
 JWK - JSON Web Key (Public Key)
-JWT - KSON Web Key (Private Key)
+JWT - JSON Web Token (Private Key)
 
