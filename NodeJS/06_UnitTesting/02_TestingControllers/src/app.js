@@ -4,6 +4,7 @@ const express = require('express');
 const { logger } = require('./middlewares/loggerMiddleware');
 const courseRouter = require('./routes/courseRoute');
 const userRouter = require("./routes/userRoute");
+const cookieParser = require("cookie-parser");
 
 const dns = require("dns");
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
@@ -15,6 +16,7 @@ const URI = `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(process.e
 const PORT = process.env.PORT;
 
 app.use(logger);
+app.use(cookieParser());
 
 app.use(express.json());
 app.use('/api/v1/courses', courseRouter);
