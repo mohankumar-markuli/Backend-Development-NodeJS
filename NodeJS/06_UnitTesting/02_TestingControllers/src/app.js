@@ -5,6 +5,9 @@ const { logger } = require('./middlewares/loggerMiddleware');
 const courseRouter = require('./routes/courseRoute');
 const userRouter = require("./routes/userRoute");
 
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+
 const app = express(); //instance of express
 const mangoose = require("mongoose");
 
@@ -25,7 +28,7 @@ app.get('/', (req, res) => {
 
 // if I have multiple dependencies - pass all the dependencies inside promise.all
 // Promise.all([]);
-console.log(URI)
+
 mangoose.connect(URI).
 	then(() => {
 		console.log("Connected to MongoDB");
