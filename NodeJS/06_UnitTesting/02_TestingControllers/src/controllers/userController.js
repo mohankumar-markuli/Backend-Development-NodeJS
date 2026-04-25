@@ -29,7 +29,7 @@ const registerUser = async (req, res) => {
     }
 }
 
-async function loginUser(req, res) {
+const loginUser = async (req, res) => {
     try {
 
         const { emailId, password } = req.body;
