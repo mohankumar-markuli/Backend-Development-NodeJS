@@ -6,7 +6,7 @@ const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
-        // ✅ validation (fixes bcrypt error)
+        //  validation (fixes bcrypt error)
         if (!name || !email || !password) {
             throw new Error("All fields are required");
         }
@@ -41,7 +41,7 @@ const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // ✅ validation
+        // validation
         if (!email || !password) {
             throw new Error("Email and password are required");
         }
