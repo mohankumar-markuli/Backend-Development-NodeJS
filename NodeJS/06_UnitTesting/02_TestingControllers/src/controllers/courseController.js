@@ -25,8 +25,11 @@ const createCourse = async (req, res) => {
 
 const getAllCourse = async (req, res) => {
     try {
+
         const dbCourses = await courseModel.find({});
-        if (!dbCourses) throw new Error("No data found");
+        if (!dbCourses || dbCourses.length === 0) {
+            throw new Error("No data found");
+        }
 
         res.status(200).json({
             message: "Course Fetched successfully",

@@ -3,33 +3,26 @@ const userModel = require("../models/userModel");
 
 const userAuth = async (req, res, next) => {
     try {
-
         const { token } = req.cookies;
-        console.log(token);
-
 
         if (!token) {
-            return res.status(401).send("Plase login");
+            return res.status(401).send("Please login");
         }
 
-        //validate the token
-        const decodedObj = await jwt.verify(token, process.env.JWT_SECRET_KEY,);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-        console.log(decodedObj);
-        const { _id } = decodedObj;
+        const user = await userModel.findById(decoded._id);
 
-        const user = await userModel.findById(_id);
         if (!user) {
             throw new Error("User not found");
         }
+
         req.user = user;
         next();
-    }
-    catch (err) {
-        console.log(err);
+
+    } catch (err) {
         res.status(401).send({ message: "Invalid User" });
     }
-}
-
+};
 
 module.exports = { userAuth };
