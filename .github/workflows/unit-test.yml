@@ -24,7 +24,7 @@ jobs:
         run: cd NodeJS/06_Testing/05_ContinuousIntegration
 
       - name: Install dependencies
-        working-directory: NodeJS/06_Testing/05_ContinuousIntegration
+        working-directory: NodeJS/06_Testing/05_ContinousIntegration
         run: npm ci
 
       - name: Run tests
@@ -35,27 +35,27 @@ jobs:
         uses: actions/github-script@v6
         if: always()
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
 
-            let testOutput = fs.readFileSync('NodeJS/06_Testing/05_ContinousIntegration/test_output.log', 'utf8');
-            const maxLength = 60000;
+            const path = 'NodeJS/06_Testing/05_ContinousIntegration/test_output.log';
 
+            if (!fs.existsSync(path)) {
+              console.log("Test output not found");
+              return;
+            }
+
+            let testOutput = fs.readFileSync(path, 'utf8');
+
+            const maxLength = 60000;
             if (testOutput.length > maxLength) {
               testOutput = testOutput.slice(0, maxLength) + "\n... (truncated)";
             }
-
-            const comment = `## Test Results
-
-            \`\`\`
-            ${testOutput}
-            \`\`\`
-            `;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: comment
+              body: `## Test Results\n\n\`\`\`\n${testOutput}\n\`\`\``
             });
