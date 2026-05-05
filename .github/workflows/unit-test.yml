@@ -19,16 +19,12 @@ jobs:
         with:
           node-version: "20.x"
 
-      - name: Navigate to target directory
-
-        run: cd NodeJS/06_Testing/05_ContinuousIntegration
-
       - name: Install dependencies
-        working-directory: NodeJS/06_Testing/05_ContinousIntegration
+        working-directory: ./NodeJS/06_Testing/05_ContinuousIntegration
         run: npm ci
 
       - name: Run tests
-        working-directory: NodeJS/06_Testing/05_ContinousIntegration
+        working-directory: ./NodeJS/06_Testing/05_ContinuousIntegration
         run: npm test -- --coverage 2>&1 | tee test_output.log
 
       - name: Comment PR
@@ -39,7 +35,7 @@ jobs:
           script: |
             const fs = require('fs');
 
-            const path = 'NodeJS/06_Testing/05_ContinousIntegration/test_output.log';
+            const path = 'NodeJS/06_Testing/05_ContinuousIntegration/test_output.log';
 
             if (!fs.existsSync(path)) {
               console.log("Test output not found");
