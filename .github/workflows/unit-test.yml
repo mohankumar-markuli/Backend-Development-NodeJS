@@ -20,10 +20,10 @@ jobs:
           node-version: "20.x"
 
       - name: Navigate to target directory
-        run: cd ./NodeJS/06_Testing/05_ContinuousIntegration
+        run: cd NodeJS/06_Testing/05_ContinuousIntegration
 
       - name: Install dependencies
-        working-directory: ./NodeJS/06_Testing/05_ContinuousIntegration
+        working-directory: NodeJS/06_Testing/05_ContinuousIntegration
         run: npm ci
 
       - name: Run tests
@@ -37,7 +37,7 @@ jobs:
           script: |
             const fs = require('fs');
 
-            let testOutput = fs.readFileSync('../NodeJS/06_Testing/05_ContinuousIntegration/test_output.log', 'utf8');
+            let testOutput = fs.readFileSync('NodeJS/06_Testing/05_ContinuousIntegration/test_output.log', 'utf8');
             const maxLength = 60000;
 
             if (testOutput.length > maxLength) {
