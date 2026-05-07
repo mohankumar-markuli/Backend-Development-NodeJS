@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname)));
 
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-  
+
   const query = `
     SELECT id, username, is_admin, email 
     FROM users 
@@ -54,27 +54,27 @@ app.post('/api/login', (req, res) => {
     AND password = '${password}'
   `;
 
-  
+
   db.all(query, (err, user) => {
     if (err) return res.status(500).json({ error: err.message });
     if (!user) return res.status(401).json({ error: 'Invalid credentials' });
-    
+
     res.json(user);
   });
 });
 
 app.post('/api/posts', (req, res) => {
   const post = {
-    id: Math.round(Math.random()*1000),
+    id: Math.round(Math.random() * 1000),
     title: req.body.title,
     content: req.body.content,
     isPrivate: false
   }
-  
+
   console.log(req.body);
-  
-  const id = Math.round(Math.random()*1000);
-  
+
+  const id = Math.round(Math.random() * 1000);
+
   const query = `INSERT INTO blog_posts (id, title, content) VALUES (${id}, '${req.body.title}', '${req.body.content}')`;
 
   console.log("Executing query:", query);
@@ -85,22 +85,22 @@ app.post('/api/posts', (req, res) => {
     if (err) return res.status(500).json({ error: err.message });
 
     db.all(query2, (err, posts) => {
-      if (err) { return res.status(500).json({ error: err.message });}
-      res.json(posts[posts.length -1] || []);
-  
+      if (err) { return res.status(500).json({ error: err.message }); }
+      res.json(posts[posts.length - 1] || []);
+
     });
   });
 });
 
 app.get('/api/users/profile', (req, res) => {
   const { username } = req.query;
-  
+
   const query = `
     SELECT username, email 
     FROM users 
     WHERE username = '${username}'
   `;
-  
+
   db.all(query, (err, user) => {
     if (err) return res.status(500).json({ error: err.message });
     if (!user) return res.status(404).json({ error: 'User not found' });
