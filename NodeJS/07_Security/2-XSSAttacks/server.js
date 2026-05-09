@@ -19,7 +19,7 @@ db.serialize(() => {
     email TEXT,
     profile_bio TEXT
   )`);
-  
+
   db.run(`CREATE TABLE blog_posts (
     id INTEGER PRIMARY KEY,
     user_id INTEGER,
@@ -28,7 +28,7 @@ db.serialize(() => {
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(user_id) REFERENCES users(id)
   )`);
-  
+
   db.run(`CREATE TABLE comments (
     id INTEGER PRIMARY KEY,
     post_id INTEGER,
@@ -43,7 +43,7 @@ db.serialize(() => {
   db.run(`INSERT INTO users (username, email, profile_bio) VALUES 
     ('admin', 'admin@example.com', 'Site Administrator'),
     ('john_doe', 'john@example.com', 'Regular blogger')`);
-    
+
   db.run(`INSERT INTO blog_posts (user_id, title, content) VALUES 
     (1, 'Welcome to our blog!', 'This is our first post. Feel free to comment!')`);
 });
@@ -55,18 +55,18 @@ app.get('/api/search', (req, res) => {
     SELECT blog_posts.*, users.username 
     FROM blog_posts 
     JOIN users ON blog_posts.user_id = users.id 
-    WHERE title LIKE ?`, 
-    [`%${searchTerm}%`], 
+    WHERE title LIKE ?`,
+    [`%${searchTerm}%`],
     (err, posts) => {
       if (err) return res.status(500).json({ error: err.message });
       res.send(`
         <h2>Search Results for: ${searchTerm}</h2>
-        <div>${posts.map(post => 
-          `<div>
+        <div>${posts.map(post =>
+        `<div>
             <h3>${post.title}</h3>
             <p>By: ${post.username}</p>
           </div>`
-        ).join('')}</div>
+      ).join('')}</div>
       `);
     });
 });
@@ -76,17 +76,17 @@ app.post('/api/posts/:postId/comments', (req, res) => {
   const postId = req.params.postId;
   db.run('INSERT INTO comments (post_id, user_id, content) VALUES (?, ?, ?)',
     [postId, userId, content], (err) => {
-    if (err) return res.status(500).json({ error: err.message });
-    res.json({ success: true });
-  });
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ success: true });
+    });
 });
 
 app.get('/api/posts/:id', (req, res) => {
   const postId = req.params.id;
   db.get('SELECT * FROM blog_posts WHERE id = ?', [postId], (err, post) => {
     if (err) return res.status(500).json({ error: err.message });
-    db.all('SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE post_id = ?', 
-      [postId], 
+    db.all('SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE post_id = ?',
+      [postId],
       (err, comments) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json({ post, comments });
