@@ -29,4 +29,7 @@ class Car {
 const camary = new Car("Toyota", "Camary", 2003);
 
 camary.start();
+
+// Accessing public method from outside the class is allowed
+// problem - hence encapsulation is required to hide the internal details of the class and only expose the necessary methods to the outside world
 camary.injectFuel();
