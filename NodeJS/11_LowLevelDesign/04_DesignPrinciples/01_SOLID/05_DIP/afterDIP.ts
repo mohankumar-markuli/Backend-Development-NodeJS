@@ -6,7 +6,7 @@ interface Engine {
     start(): void;
 }
 
-class PetrolEngine implements Engine {
+class PetrolEngine1 implements Engine {
     start() {
         console.log("Petrol engine started");
     }
@@ -38,6 +38,6 @@ class CarDIP {
     }
 }
 
-let petrolEngine = new PetrolEngine();
+let petrolEngine = new PetrolEngine1();
 let merc: CarDIP =  new CarDIP(petrolEngine)
 
