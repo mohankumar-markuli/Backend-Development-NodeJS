@@ -15,6 +15,7 @@ Approches to pick the entities
 - type: ENUM ["2W", "4W", "3W"]
 - make
 - model
+- dimension
 
 ---
 
