@@ -37,3 +37,8 @@
 35. [Deepak] Should we supprt discount: Yes
 36. [Narshimha] System for Time Tracker: No
 37. [Deepak] Should we support bicycle: No
+38. [Jay] There should be a capability to put parking spot / floor / lot under maintainence
+
+Assumptions:
+
+- People are sane enough to park in the right spot
